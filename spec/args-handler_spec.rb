@@ -30,6 +30,6 @@ describe "ArgsHandler" do
       :value => "Argh"
     }])
     
-    puts html
+    html.include?("<div><label>Test 1</label></div>").should eql(true)
   end
 end

@@ -187,9 +187,9 @@ class ArgsHandler
       html << "<tr#{classes_tr_html}><td colspan=\"2\">&nbsp;</td></tr>"
     else
       html << "<tr#{classes_tr_html}#{attr_html(tr_attrs)}>"
-      html << "<td class=\"tdt\" id=\"#{html_escape("#{args[:id]}_label")}\"><div>"
+      html << "<td class=\"tdt\" id=\"#{html_escape("#{args[:id]}_label")}\"><div><label>"
       html << title_html
-      html << "</div></td>"
+      html << "</label></div></td>"
       html << "<td#{self.style_html(css)}#{attr_html(td_attrs)}><div>"
       
       if args[:type] == :textarea
@@ -352,7 +352,7 @@ class ArgsHandler
     str = str.to_s
     
     if Kernel.const_defined?("CGI")
-      return CGI.escape(str)
+      return CGI.escape_html(str)
     elsif Kernel.const_defined?("Knj")
       return Knj::Web.html(str)
     else
