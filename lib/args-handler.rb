@@ -359,4 +359,18 @@ class ArgsHandler
       raise "Dont know how to HTML-escape string..."
     end
   end
+  
+  #Returns the HTML using simle-form.
+  def self.input_sf(args)
+    arg = args[:arg]
+    f = args[:sf]
+    
+    if arg[:type] == :select
+      collection = args[:opts].collect{ |key, val| [val, key] }
+      
+      return :name => f.input(arg[:name], :label => arg[:title], :id => arg[:id], :collection => collection, :include_blank => false)
+    else
+      return :name => f.input(arg[:name], :label => arg[:title], :id => arg[:id])
+    end
+  end
 end
