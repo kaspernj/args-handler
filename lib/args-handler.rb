@@ -28,6 +28,8 @@ class ArgsHandler
       end
     end
     
+    html = html.html_safe if html.respond_to?(:html_safe)
+    
     return html
   end
   
@@ -124,7 +126,7 @@ class ArgsHandler
     attr["disabled"] = "disabled" if args[:disabled]
     attr["maxlength"] = args[:maxlength] if args.key?(:maxlength)
     
-    raise "No name given to the Web::input()-method." if !args[:name] and args[:type] != :info and args[:type] != :textshow and args[:type] != :plain and args[:type] != :spacer and args[:type] != :headline
+    raise "No name given to the ArgsHandler::input()-method." if !args[:name] and args[:type] != :info and args[:type] != :textshow and args[:type] != :plain and args[:type] != :spacer and args[:type] != :headline
     
     css = {}
     css["text-align"] = args[:align] if args.key?(:align)
@@ -301,6 +303,8 @@ class ArgsHandler
     end
     
     html << "<tr#{classes_tr_html}><td colspan=\"2\" class=\"tdd\">#{args[:descr]}</td></tr>" if args[:descr]
+    html = html.html_safe if html.respond_to?(:html_safe)
+    
     return html
   end
   
