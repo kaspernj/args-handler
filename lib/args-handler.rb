@@ -365,12 +365,13 @@ class ArgsHandler
     arg = args[:arg]
     f = args[:sf]
     
+    input_args = {:label => arg[:title], :id => arg[:id], :value => arg[:value]}
+    
     if arg[:type] == :select
-      collection = args[:opts].collect{ |key, val| [val, key] }
-      
-      return :name => f.input(arg[:name], :label => arg[:title], :id => arg[:id], :collection => collection, :include_blank => false)
-    else
-      return :name => f.input(arg[:name], :label => arg[:title], :id => arg[:id])
+      input_args[:collection] = args[:opts].collect{ |key, val| [val, key] }
+      input_args[:include_blank] = false
     end
+    
+    return f.input(arg[:name], input_args)
   end
 end
