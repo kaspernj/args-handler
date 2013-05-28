@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "args-handler"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kaspernj"]
-  s.date = "2013-04-24"
+  s.date = "2013-05-28"
   s.description = "A small library to generate HTML for wished arguments form hashes."
   s.email = "k@spernj.org"
   s.extra_rdoc_files = [
